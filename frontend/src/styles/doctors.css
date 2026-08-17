@@ -1,0 +1,1437 @@
+/* =========================================================
+   DOCTORS SECTION
+   PREMIUM GLASSMORPHISM / DYNAMIC UI
+========================================================= */
+
+.doctors {
+  position: relative;
+
+  min-height: 850px;
+
+  padding: 120px 7%;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(57, 130, 255, 0.13),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(75, 220, 190, 0.11),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #f6faff 0%,
+      #eef5ff 45%,
+      #f8fbff 100%
+    );
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+.doctors-grid-background {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -3;
+
+  opacity: 0.35;
+
+  background-image:
+    linear-gradient(
+      rgba(38, 105, 220, 0.055) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(38, 105, 220, 0.055) 1px,
+      transparent 1px
+    );
+
+  background-size: 55px 55px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 20%,
+      black 80%,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   FLOATING ORBS
+========================================================= */
+
+.doctors-orb {
+  position: absolute;
+
+  z-index: -2;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(2px);
+
+  animation:
+    doctorsOrbFloat
+    8s
+    ease-in-out
+    infinite;
+}
+
+.doctors-orb-one {
+  width: 260px;
+  height: 260px;
+
+  top: 80px;
+  left: -120px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(44, 125, 255, 0.2),
+      transparent 70%
+    );
+}
+
+.doctors-orb-two {
+  width: 320px;
+  height: 320px;
+
+  right: -150px;
+  bottom: 80px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(57, 211, 177, 0.16),
+      transparent 70%
+    );
+
+  animation-delay: -3s;
+}
+
+@keyframes doctorsOrbFloat {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(25px, -30px, 0)
+      scale(1.08);
+  }
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.doctors-header {
+  position: relative;
+
+  max-width: 780px;
+
+  margin: 0 auto 65px;
+
+  text-align: center;
+}
+
+
+/* EYEBROW */
+
+.doctors-eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 18px;
+
+  padding: 8px 15px;
+
+  border:
+    1px solid
+    rgba(23, 105, 255, 0.16);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.58);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  color: #1769ff;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+  box-shadow:
+    0 8px 25px
+    rgba(30, 100, 220, 0.08);
+}
+
+.eyebrow-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #26c991;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(38, 201, 145, 0.12);
+
+  animation:
+    eyebrowPulse
+    2s
+    ease-in-out
+    infinite;
+}
+
+@keyframes eyebrowPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.7);
+    opacity: 0.65;
+  }
+}
+
+
+/* HEADING */
+
+.doctors-header h2 {
+  margin: 0;
+
+  color: #14213d;
+
+  font-size:
+    clamp(38px, 5vw, 64px);
+
+  line-height: 1.05;
+
+  letter-spacing: -3px;
+
+  font-weight: 850;
+}
+
+.doctors-header h2 span {
+  display: block;
+
+  background:
+    linear-gradient(
+      100deg,
+      #1769ff,
+      #36a1ff,
+      #13b98b
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  background-size: 200% auto;
+
+  animation:
+    doctorsGradient
+    5s
+    ease
+    infinite;
+}
+
+@keyframes doctorsGradient {
+
+  0% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: 0% center;
+  }
+}
+
+
+/* DESCRIPTION */
+
+.doctors-header p {
+  max-width: 650px;
+
+  margin: 22px auto 0;
+
+  color: #718096;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+/* HEADER LINE */
+
+.doctors-heading-line {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 27px;
+}
+
+.doctors-heading-line span {
+  display: block;
+
+  height: 3px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #1769ff,
+      #42a5ff
+    );
+}
+
+.doctors-heading-line span:nth-child(1) {
+  width: 28px;
+}
+
+.doctors-heading-line span:nth-child(2) {
+  width: 8px;
+  opacity: 0.45;
+}
+
+.doctors-heading-line span:nth-child(3) {
+  width: 8px;
+  opacity: 0.2;
+}
+
+
+/* =========================================================
+   DOCTOR LIST
+========================================================= */
+
+.doctor-list {
+  position: relative;
+
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(280px, 1fr)
+    );
+
+  gap: 28px;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.doctor-card {
+  position: relative;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.85);
+
+  border-radius: 30px;
+
+  background:
+    rgba(255, 255, 255, 0.58);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 25px 70px
+    rgba(31, 78, 150, 0.12),
+
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.9);
+
+  transform-style: preserve-3d;
+
+  transition:
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
+}
+
+.doctor-card:hover {
+  border-color:
+    rgba(23, 105, 255, 0.25);
+
+  box-shadow:
+    0 35px 90px
+    rgba(31, 91, 180, 0.2),
+
+    0 0 0 1px
+    rgba(255, 255, 255, 0.5);
+}
+
+
+/* CARD GLOW */
+
+.doctor-card-glow {
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  top: -120px;
+  right: -100px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(65, 150, 255, 0.2),
+      transparent 70%
+    );
+
+  filter: blur(15px);
+
+  pointer-events: none;
+
+  transition:
+    transform 0.6s ease;
+}
+
+.doctor-card:hover
+.doctor-card-glow {
+  transform: scale(1.6);
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.doctor-image-wrapper {
+  position: relative;
+
+  height: 330px;
+
+  overflow: hidden;
+
+  margin: 10px;
+
+  border-radius: 23px;
+
+  background: #dce9f8;
+}
+
+.doctor-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.8s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    filter 0.6s ease;
+}
+
+.doctor-card:hover .doctor-image {
+  transform: scale(1.08);
+
+  filter: saturate(1.08)
+    contrast(1.02);
+}
+
+
+/* IMAGE OVERLAY */
+
+.doctor-image-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(10, 35, 80, 0.02),
+      transparent 45%,
+      rgba(5, 30, 70, 0.28)
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.doctor-status {
+  position: absolute;
+
+  left: 14px;
+  bottom: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 8px 12px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.35);
+
+  border-radius: 999px;
+
+  background:
+    rgba(10, 35, 70, 0.52);
+
+  backdrop-filter: blur(12px);
+
+  color: white;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 25px
+    rgba(0, 0, 0, 0.16);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #35df9d;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(53, 223, 157, 0.18);
+
+  animation:
+    statusPulse
+    1.8s
+    ease-in-out
+    infinite;
+}
+
+@keyframes statusPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.65);
+  }
+}
+
+
+/* =========================================================
+   SPECIALIST BADGE
+========================================================= */
+
+.doctor-specialist-badge {
+  position: absolute;
+
+  top: 14px;
+  left: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 8px 12px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.45);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(15px);
+
+  color: #1769ff;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.5px;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 50, 120, 0.12);
+}
+
+.doctor-specialist-badge span {
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   IMAGE PLUS
+========================================================= */
+
+.doctor-image-plus {
+  position: absolute;
+
+  right: 14px;
+  bottom: 14px;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.4);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.75);
+
+  backdrop-filter: blur(12px);
+
+  color: #1769ff;
+
+  font-size: 21px;
+
+  font-weight: 500;
+
+  transition:
+    transform 0.4s ease,
+    background 0.4s ease;
+}
+
+.doctor-card:hover
+.doctor-image-plus {
+  transform:
+    rotate(90deg)
+    scale(1.08);
+
+  background: white;
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.doctor-info {
+  position: relative;
+
+  padding: 10px 24px 25px;
+}
+
+
+/* TOP LINE */
+
+.doctor-top-line {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 8px;
+}
+
+.doctor-role {
+  color: #1769ff;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+.doctor-number {
+  color: #b5c2d5;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+
+/* NAME */
+
+.doctor-info h3 {
+  margin: 0;
+
+  color: #17243b;
+
+  font-size: 25px;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.7px;
+
+  font-weight: 850;
+}
+
+
+/* SPECIALITY */
+
+.doctor-speciality {
+  margin: 7px 0 0;
+
+  color: #68778f;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  min-height: 20px;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.doctor-details {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-top: 18px;
+}
+
+.doctor-detail {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 0;
+
+  color: #77859a;
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+.doctor-detail span:last-child {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.detail-icon {
+  width: 25px;
+  height: 25px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background:
+    rgba(23, 105, 255, 0.08);
+
+  color: #1769ff;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.doctor-divider {
+  height: 1px;
+
+  margin:
+    20px 0 17px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(100, 130, 170, 0.18),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.doctor-book-btn {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 13px 15px;
+
+  overflow: hidden;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #1769ff,
+      #318bff,
+      #16b993
+    );
+
+  background-size: 200% auto;
+
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 28px
+    rgba(23, 105, 255, 0.2);
+
+  transition:
+    background-position 0.5s ease,
+    box-shadow 0.35s ease;
+}
+
+.doctor-book-btn:hover {
+  background-position: 100% center;
+
+  box-shadow:
+    0 16px 35px
+    rgba(23, 105, 255, 0.3);
+}
+
+.doctor-btn-arrow {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.18);
+
+  font-size: 16px;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.doctor-book-btn:hover
+.doctor-btn-arrow {
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   TRUST STRIP
+========================================================= */
+
+.doctors-trust-strip {
+  max-width: 1050px;
+
+  margin: 60px auto 0;
+
+  padding: 18px 22px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 10px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.8);
+
+  border-radius: 22px;
+
+  background:
+    rgba(255, 255, 255, 0.5);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 20px 55px
+    rgba(30, 75, 140, 0.1);
+}
+
+.trust-item {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 11px;
+
+  padding: 10px;
+
+  border-right:
+    1px solid
+    rgba(120, 150, 190, 0.15);
+}
+
+.trust-item:last-child {
+  border-right: none;
+}
+
+.trust-icon {
+  width: 37px;
+  height: 37px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    rgba(23, 105, 255, 0.09);
+
+  color: #1769ff;
+
+  font-size: 17px;
+}
+
+.trust-item div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  text-align: left;
+}
+
+.trust-item strong {
+  color: #27364e;
+
+  font-size: 11px;
+}
+
+.trust-item small {
+  color: #8995a7;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   LOADING SKELETON
+========================================================= */
+
+.doctors-loading {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(280px, 1fr)
+    );
+
+  gap: 28px;
+
+  max-width: 1250px;
+
+  margin: 0 auto;
+}
+
+.doctor-skeleton-card {
+  height: 610px;
+
+  padding: 10px 10px 25px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.8);
+
+  border-radius: 30px;
+
+  background:
+    rgba(255, 255, 255, 0.55);
+
+  backdrop-filter: blur(20px);
+
+  overflow: hidden;
+}
+
+.skeleton {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(220, 230, 243, 0.6),
+      rgba(245, 248, 252, 0.9),
+      rgba(220, 230, 243, 0.6)
+    );
+
+  background-size: 200% 100%;
+
+  animation:
+    skeletonShimmer
+    1.5s
+    linear
+    infinite;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 330px;
+
+  border-radius: 23px;
+}
+
+.skeleton-small {
+  width: 110px;
+  height: 10px;
+
+  margin: 20px 14px 10px;
+}
+
+.skeleton-title {
+  width: 65%;
+  height: 24px;
+
+  margin: 0 14px 10px;
+}
+
+.skeleton-text {
+  width: 80%;
+  height: 12px;
+
+  margin: 0 14px 25px;
+}
+
+.skeleton-button {
+  width: calc(100% - 28px);
+  height: 45px;
+
+  margin: 0 14px;
+}
+
+@keyframes skeletonShimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.doctors-error {
+  max-width: 500px;
+
+  margin: 0 auto;
+
+  padding: 45px 30px;
+
+  text-align: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.8);
+
+  border-radius: 28px;
+
+  background:
+    rgba(255, 255, 255, 0.58);
+
+  backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 25px 70px
+    rgba(50, 70, 120, 0.12);
+}
+
+.error-icon {
+  width: 55px;
+  height: 55px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(235, 70, 80, 0.1);
+
+  color: #e5484d;
+
+  font-size: 24px;
+
+  font-weight: 900;
+}
+
+.doctors-error h3 {
+  margin: 0;
+
+  color: #26364f;
+
+  font-size: 20px;
+}
+
+.doctors-error p {
+  margin: 10px 0 22px;
+
+  color: #7d899a;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+.doctors-error button,
+.doctors-empty button {
+  padding: 12px 20px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1769ff,
+      #348fff
+    );
+
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px
+    rgba(23, 105, 255, 0.22);
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.doctors-empty {
+  max-width: 500px;
+
+  margin: 0 auto;
+
+  padding: 50px 30px;
+
+  text-align: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.8);
+
+  border-radius: 28px;
+
+  background:
+    rgba(255, 255, 255, 0.55);
+
+  backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 25px 70px
+    rgba(30, 75, 140, 0.1);
+}
+
+.empty-icon {
+  margin-bottom: 15px;
+
+  color: #1769ff;
+
+  font-size: 30px;
+}
+
+.doctors-empty h3 {
+  margin: 0;
+
+  color: #26364f;
+
+  font-size: 20px;
+}
+
+.doctors-empty p {
+  margin: 10px 0 22px;
+
+  color: #7d899a;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .doctors {
+    padding:
+      90px 5%;
+  }
+
+  .doctor-list {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .doctor-image-wrapper {
+    height: 300px;
+  }
+
+  .doctors-trust-strip {
+    grid-template-columns:
+      1fr;
+  }
+
+  .trust-item {
+    border-right: none;
+
+    border-bottom:
+      1px solid
+      rgba(120, 150, 190, 0.15);
+  }
+
+  .trust-item:last-child {
+    border-bottom: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .doctors {
+    padding:
+      75px 18px;
+  }
+
+  .doctors-header {
+    margin-bottom: 45px;
+  }
+
+  .doctors-header h2 {
+    font-size: 40px;
+
+    letter-spacing: -2px;
+  }
+
+  .doctors-header p {
+    font-size: 13px;
+  }
+
+  .doctor-list {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .doctor-card {
+    border-radius: 25px;
+  }
+
+  .doctor-image-wrapper {
+    height: 340px;
+
+    border-radius: 20px;
+  }
+
+  .doctor-info {
+    padding:
+      10px 20px 22px;
+  }
+
+  .doctor-info h3 {
+    font-size: 23px;
+  }
+
+  .doctors-trust-strip {
+    margin-top: 40px;
+
+    padding: 12px;
+  }
+
+  .trust-item {
+    justify-content: flex-start;
+  }
+
+  .doctor-skeleton-card {
+    height: 580px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .doctors {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .doctors-header h2 {
+    font-size: 34px;
+  }
+
+  .doctor-image-wrapper {
+    height: 300px;
+  }
+
+  .doctor-specialist-badge {
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .doctors *,
+  .doctors *::before,
+  .doctors *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
