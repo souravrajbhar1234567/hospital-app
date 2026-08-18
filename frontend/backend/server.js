@@ -32,43 +32,63 @@ app.use(helmet());
 // CORS
 // ==========================================
 
+// Production frontend URLs
 const allowedOrigins = [
-  // Local development
-  "http://localhost:5173",
-  "http://localhost:5174",
-  "http://localhost:5175",
-  "http://localhost:5176",
-  "http://localhost:5177",
-
-  // Production frontend
   "https://hospital-app-hxzn.onrender.com",
 ];
 
+// CORS configuration
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests from Postman, Thunder Client,
-      // server-to-server requests, etc.
+      // ==========================================
+      // Allow requests without Origin
+      // Postman / Thunder Client / server requests
+      // ==========================================
+
       if (!origin) {
         return callback(null, true);
       }
 
-      // Allow known frontend origins
+      // ==========================================
+      // Allow production frontend
+      // ==========================================
+
       if (allowedOrigins.includes(origin)) {
-        console.log("✅ CORS allowed:", origin);
+        console.log("✅ Production CORS allowed:", origin);
         return callback(null, true);
       }
 
+      // ==========================================
+      // Allow ANY localhost port
+      // Examples:
+      // http://localhost:5173
+      // http://localhost:5177
+      // http://localhost:5178
+      // http://localhost:3000
+      // ==========================================
+
+      if (
+        origin.startsWith("http://localhost:") ||
+        origin.startsWith("http://127.0.0.1:")
+      ) {
+        console.log("✅ Localhost CORS allowed:", origin);
+        return callback(null, true);
+      }
+
+      // ==========================================
       // Block unknown origins
-      console.log("❌ CORS blocked origin:", origin);
+      // ==========================================
+
+      console.log("❌ CORS blocked:", origin);
 
       return callback(new Error("Not allowed by CORS"));
     },
 
-    // Required when using cookies
+    // Cookies / authentication
     credentials: true,
 
-    // Allowed HTTP methods
+    // HTTP methods
     methods: [
       "GET",
       "POST",
@@ -78,7 +98,7 @@ app.use(
       "OPTIONS",
     ],
 
-    // Allowed request headers
+    // Request headers
     allowedHeaders: [
       "Content-Type",
       "Authorization",
@@ -180,7 +200,7 @@ app.use((err, req, res, next) => {
     });
   }
 
-  // Other server errors
+  // Other errors
   res.status(500).json({
     success: false,
     message: "Internal server error",
