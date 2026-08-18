@@ -6,56 +6,70 @@ import User from "./models/User.js";
 
 dotenv.config();
 
-const createDoctor = async () => {
+const doctors = [
+  {
+    name: "Dr. Rahul Sharma",
+    email: "doctor@rekhahospital.com",
+    phone: "9876543211",
+    specialization: "General Physician",
+  },
+  {
+    name: "Dr. Priya Mehta",
+    email: "priya@rekhahospital.com",
+    phone: "9876543212",
+    specialization: "Cardiologist",
+  },
+  {
+    name: "Dr. Arjun Patel",
+    email: "arjun@rekhahospital.com",
+    phone: "9876543213",
+    specialization: "Dermatologist",
+  },
+];
+
+const createDoctors = async () => {
   try {
     await connectDB();
-
-    const existingDoctor = await User.findOne({
-      email: "doctor@rekhahospital.com",
-    });
-
-    if (existingDoctor) {
-      console.log("Doctor already exists.");
-
-      console.log({
-        id: existingDoctor._id,
-        name: existingDoctor.name,
-        email: existingDoctor.email,
-        role: existingDoctor.role,
-      });
-
-      process.exit(0);
-    }
 
     const hashedPassword = await bcrypt.hash(
       "Doctor@123",
       12
     );
 
-    const doctor = await User.create({
-      name: "Dr. Rahul Sharma",
-      email: "doctor@rekhahospital.com",
-      phone: "9876543211",
-      password: hashedPassword,
-      role: "doctor",
-      avatar: "",
-      isVerified: true,
-      isActive: true,
-    });
+    for (const doctorData of doctors) {
+      const existingDoctor = await User.findOne({
+        email: doctorData.email,
+      });
 
-    console.log("✅ Doctor created successfully!");
+      if (existingDoctor) {
+        console.log(
+          `Doctor already exists: ${doctorData.email}`
+        );
+        continue;
+      }
 
-    console.log({
-      id: doctor._id,
-      name: doctor.name,
-      email: doctor.email,
-      role: doctor.role,
-    });
+      const doctor = await User.create({
+        ...doctorData,
+        password: hashedPassword,
+        role: "doctor",
+        avatar: "",
+        isVerified: true,
+        isActive: true,
+      });
 
+      console.log("✅ Doctor created:", {
+        id: doctor._id,
+        name: doctor.name,
+        email: doctor.email,
+        specialization: doctor.specialization,
+      });
+    }
+
+    console.log("✅ Doctor setup completed.");
     process.exit(0);
   } catch (error) {
     console.error(
-      "❌ Create doctor error:",
+      "❌ Create doctors error:",
       error
     );
 
@@ -63,4 +77,4 @@ const createDoctor = async () => {
   }
 };
 
-createDoctor();
+createDoctors();
