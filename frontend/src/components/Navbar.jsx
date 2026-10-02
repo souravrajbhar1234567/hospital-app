@@ -143,6 +143,17 @@ function Navbar() {
             Appointment
           </a>
 
+          <button
+            type="button"
+            className="nav-ai-btn"
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("open-ai-assistant"))
+            }
+          >
+            <span className="nav-ai-sparkle">✨</span>
+            <span>AI Assistant</span>
+            <span className="nav-ai-badge">24/7</span>
+          </button>
         </nav>
 
 
@@ -429,6 +440,17 @@ function Navbar() {
           >
             Appointment
           </a>
+
+          <button
+            type="button"
+            className="mobile-ai-btn"
+            onClick={() => {
+              closeMobile();
+              window.dispatchEvent(new CustomEvent("open-ai-assistant"));
+            }}
+          >
+            <span>✨ AI Health Assistant (24/7)</span>
+          </button>
 
 
           {/* =================================================

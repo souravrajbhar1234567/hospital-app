@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Appointment from "../models/appointmentModel.js";
 import User from "../models/User.js";
 
@@ -42,18 +43,33 @@ export const createAppointment =
       // CHECK DOCTOR
       // ========================================
 
-      const doctorUser =
-        await User.findOne({
+      let doctorUser = null;
+
+      if (mongoose.Types.ObjectId.isValid(doctor)) {
+        doctorUser = await User.findOne({
           _id: doctor,
           role: "doctor",
           isActive: true,
         });
+      }
+
+      // Flexible fallback lookup by name or email
+      if (!doctorUser && typeof doctor === "string") {
+        doctorUser = await User.findOne({
+          role: "doctor",
+          isActive: true,
+          $or: [
+            { name: new RegExp(doctor.trim(), "i") },
+            { email: doctor.trim().toLowerCase() },
+          ],
+        });
+      }
 
       if (!doctorUser) {
         return res.status(404).json({
           success: false,
           message:
-            "Doctor not found or unavailable",
+            "Doctor not found or unavailable. Please choose Dr. Priya Mehta, Dr. Arjun Patel, or Dr. Rahul Sharma.",
         });
       }
 
@@ -64,7 +80,7 @@ export const createAppointment =
       const appointment =
         await Appointment.create({
           patient: req.user._id,
-          doctor,
+          doctor: doctorUser._id,
           appointmentDate: date,
           reason: reason || "",
           status: "pending",

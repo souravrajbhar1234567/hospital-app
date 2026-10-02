@@ -8,6 +8,7 @@ import d2 from "../assets/doctor2.jpeg";
 import d3 from "../assets/doctor3.jpeg";
 
 import api from "../services/api.js";
+import { DEFAULT_DOCTORS } from "../services/aiService.js";
 
 const fallbackImages = [d1, d2, d3];
 
@@ -30,8 +31,8 @@ const cardVariants = {
 };
 
 const Doctors = () => {
-  const [doctors, setDoctors] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [doctors, setDoctors] = useState(DEFAULT_DOCTORS);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const loadDoctors = async () => {
@@ -43,24 +44,11 @@ const Doctors = () => {
 
       console.log("Doctors API response:", response.data);
 
-      if (response.data?.success) {
-        setDoctors(response.data.doctors || []);
-      } else {
-        setError(
-          response.data?.message ||
-            "Unable to load doctors."
-        );
+      if (response.data?.success && response.data.doctors?.length > 0) {
+        setDoctors(response.data.doctors);
       }
     } catch (err) {
-      console.error("Doctor loading error:", err);
-      console.error("Status:", err.response?.status);
-      console.error("Response:", err.response?.data);
-
-      setError(
-        err.response?.data?.message ||
-          err.message ||
-          "Unable to load doctors. Please try again."
-      );
+      console.warn("Doctor loading error, using default doctors:", err.message);
     } finally {
       setLoading(false);
     }
@@ -70,7 +58,18 @@ const Doctors = () => {
     loadDoctors();
   }, []);
 
-  const handleAppointment = () => {
+  const handleBookDoctor = (doctor) => {
+    window.dispatchEvent(
+      new CustomEvent("select-doctor", {
+        detail: {
+          doctorId: doctor._id,
+          doctorName: doctor.name,
+          specialization: doctor.specialization,
+          reason: `Appointment with ${doctor.name} (${doctor.specialization || "Specialist"})`,
+        },
+      })
+    );
+
     const appointmentSection =
       document.getElementById("appointment");
 
@@ -418,7 +417,7 @@ const Doctors = () => {
                   <motion.button
                     type="button"
                     className="doctor-book-btn"
-                    onClick={handleAppointment}
+                    onClick={() => handleBookDoctor(doctor)}
                     whileHover={{
                       scale: 1.02,
                     }}
@@ -426,15 +425,13 @@ const Doctors = () => {
                       scale: 0.97,
                     }}
                   >
-
                     <span>
-                      Book Appointment
+                      Book with {doctor.name}
                     </span>
 
                     <span className="doctor-btn-arrow">
                       →
                     </span>
-
                   </motion.button>
 
                 </div>

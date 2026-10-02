@@ -308,7 +308,8 @@ const MyAppointments = () => {
                         </h2>
 
                         <p>
-                          Medical Specialist
+                          {appointment.doctor?.specialization ||
+                            "Medical Specialist"}
                         </p>
                       </div>
 

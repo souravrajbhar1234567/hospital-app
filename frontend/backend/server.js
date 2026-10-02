@@ -11,6 +11,7 @@ import authRoutes from "./routes/authRoutes.js";
 import doctorRoutes from "./routes/doctorRoutes.js";
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import doctorAppointmentRoutes from "./routes/doctorAppointmentRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
 
 dotenv.config();
 
@@ -169,6 +170,12 @@ app.use(
   "/api/doctor-appointments",
   doctorAppointmentRoutes
 );
+
+// ==========================================
+// AI HEALTHCARE ASSISTANT ROUTES
+// ==========================================
+
+app.use("/api/ai", aiRoutes);
 
 // ==========================================
 // UNKNOWN ROUTES

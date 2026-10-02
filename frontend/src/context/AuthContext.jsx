@@ -62,6 +62,13 @@ export function AuthProvider({ children }) {
         const loggedInUser =
           response.data.user;
 
+        if (response.data?.token) {
+          localStorage.setItem(
+            "rekha_hospital_token",
+            response.data.token
+          );
+        }
+
         setUser(loggedInUser);
 
         return {
@@ -135,6 +142,7 @@ export function AuthProvider({ children }) {
         error.response?.data || error.message
       );
     } finally {
+      localStorage.removeItem("rekha_hospital_token");
       setUser(null);
     }
   };

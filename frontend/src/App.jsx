@@ -13,6 +13,8 @@ import Doctors from "./components/Doctors";
 import Services from "./components/Services";
 import Appointment from "./components/Appointment";
 import Footer from "./components/Footer";
+import AiAssistant from "./components/AiAssistant";
+import AiHeroSection from "./components/AiHeroSection";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -46,6 +48,8 @@ function HospitalHome() {
 
         <Home />
 
+        <AiHeroSection />
+
         <Doctors />
 
         <Services />
@@ -55,6 +59,8 @@ function HospitalHome() {
       </main>
 
       <Footer />
+
+      <AiAssistant />
 
     </div>
   );
@@ -86,6 +92,8 @@ function AuthLayout({ children }) {
         {children}
 
       </main>
+
+      <AiAssistant />
 
     </div>
   );

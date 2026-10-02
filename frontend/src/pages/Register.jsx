@@ -55,9 +55,9 @@ function Register() {
       return;
     }
 
-    if (form.password.length < 6) {
+    if (form.password.length < 8) {
       setError(
-        "Password must contain at least 6 characters."
+        "Password must contain at least 8 characters."
       );
 
       return;
@@ -195,7 +195,7 @@ function Register() {
               id="password"
               name="password"
               type="password"
-              placeholder="Minimum 6 characters"
+              placeholder="Minimum 8 characters"
               value={form.password}
               onChange={handleChange}
               autoComplete="new-password"

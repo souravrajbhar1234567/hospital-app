@@ -14,6 +14,11 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
+    const token = localStorage.getItem("rekha_hospital_token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
     console.log(
       `➡️ API Request: ${
         config.method?.toUpperCase()
